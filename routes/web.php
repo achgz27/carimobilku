@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HubungiController;
+use App\Http\Controllers\TentangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,15 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.beranda');
-});
-Route::get('/blog', function () {
-    return view('pages.blog');
-});
-Route::get('/tentang', function () {
-    return view('pages.tentang');
-});
-Route::get('/hubungi', function () {
-    return view('pages.hubungi');
-});
+Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/hubungi', [HubungiController::class, 'index'])->name('hubungi');
