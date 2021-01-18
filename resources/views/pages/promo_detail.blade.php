@@ -14,10 +14,11 @@ $content = $data['deskripsi'];
     <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-            <h2>Dolorum optio tempore voluptas dignissimos</h2>
+            <h2></h2>
             <ol>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="{{ route('beranda') }}">Home</a></li>
+                <li><a href="{{ route('promo') }}">Promo</a></li>
+                <li>{{ $judul }}</li>
             </ol>
         </div>
 
@@ -39,7 +40,7 @@ $content = $data['deskripsi'];
                     </div>
 
                     <h2 class="entry-title">
-                        <a href="blog-single.html">{{ $judul }}</a>
+                        <a href="javascript:void(0)">{{ $judul }}</a>
                     </h2>
 
                     <div class="entry-meta">

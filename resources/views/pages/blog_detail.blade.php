@@ -14,10 +14,11 @@ $content = $data['deskripsi'];
     <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-            <h2>Dolorum optio tempore voluptas dignissimos</h2>
+            <h2></h2>
             <ol>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="{{ route('beranda') }}">Home</a></li>
+                <li><a href="{{ route('blog') }}">Blog</a></li>
+                <li>{{ $judul }}</li>
             </ol>
         </div>
 
