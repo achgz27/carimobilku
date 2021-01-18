@@ -12,8 +12,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected static $baseUri = 'http://localhost/kmg/ms/public/api/';
-    protected static $baseImg = 'http://localhost/kumalagroup/assets/img_marketing/';
+    // protected static $baseUri = 'http://localhost/kmg/ms/public/api/';
+    // protected static $baseImg = 'http://localhost/kumalagroup/assets/img_marketing/';
+
+    protected static $baseUri = 'http://portal.kumalagroup.co.id/kmg/ms/public/api/';
+    protected static $baseImg = 'https://kumalagroup.id/assets/img_marketing/';
 
     protected static $token;
 
@@ -44,7 +47,7 @@ class Controller extends BaseController
         }
 
         $response = Http::withToken($token)
-            ->get('http://localhost/kmg/ms/public/api/auth/validate');
+            ->get(self::$baseUri . 'auth/validate');
         $result = $response->json();
 
         if ($result['status'] === false) {

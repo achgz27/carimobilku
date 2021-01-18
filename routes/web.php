@@ -3,6 +3,7 @@
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HubungiController;
+use App\Http\Controllers\PromoController;
 use App\Http\Controllers\TentangController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/promo', [PromoController::class, 'index'])->name('promo');
 Route::get('/hubungi', [HubungiController::class, 'index'])->name('hubungi');

@@ -6,7 +6,7 @@
         display: inline-flex;
     }
 
-    li.page-item.active .page-link {
+    .page-item.active .page-link {
         background-color: #e1444d;
         border-color: #e1444d;
     }
@@ -43,25 +43,19 @@
 
         <div class="row">
             @foreach($data['blogs'] as $blog)
-
-            @empty($blog['thumb'])
-            @php $gambar = $baseImg.'berita/'.$blog['gambar']; @endphp
-            @else
-            @php $gambar = $baseImg.'berita/thumb/'.$blog['thumb']; @endphp
-            @endempty
-
             @php
+            $gambar = $baseImg.'berita/'.(empty($blog['thumb'])?$blog['gambar']:'thumb/'.$blog['thumb']);
             $judul = Str::title($blog['judul']);
             $tipe = Str::ucfirst($blog['type']);
             $tanggal = \Carbon\Carbon::parse($blog['updated_at'])->format('d-m-Y');
             $content = Str::limit(strip_tags($blog['deskripsi']),200);
             @endphp
 
-            <div class="col-lg-4  col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
                 <article class="entry">
 
                     <div class="entry-img">
-                        <img src="{{ $gambar }}" alt="" class="img-fluid">
+                        <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">
                     </div>
 
                     <h2 class="entry-title">

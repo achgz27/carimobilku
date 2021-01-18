@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class BlogController extends Controller
+class PromoController extends Controller
 {
     public function index(Request $request)
     {
         if (isset($request->page)) {
-            $uri = parent::$baseUri . 'blog?page=' . $request->page;
+            $uri = parent::$baseUri . 'promo?page=' . $request->page;
         } else {
-            $uri = parent::$baseUri . 'blog';
+            $uri = parent::$baseUri . 'promo';
         }
 
         $response = Http::withToken(parent::$token)->get($uri);
 
         $data = $response->json()['data'];
-        $data['links'] = str_replace(parent::$baseUri . 'blog', route('blog'), $data['links']);
+        $data['links'] = str_replace(parent::$baseUri . 'promo', route('promo'), $data['links']);
 
-        $index = 'blog';
+        $index = 'promo';
         $baseImg = parent::$baseImg;
-        return view('pages.blog', compact('data', 'index', 'baseImg'));
+        return view('pages.promo', compact('data', 'index', 'baseImg'));
     }
 }
