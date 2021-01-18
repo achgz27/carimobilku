@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-lg-4 entry" style="padding: 0;margin-bottom: 0;box-shadow: none;">
                             <div class="entry-img" style="margin-bottom: 0;">
-                                <img src="{{ $gambar }}" alt="" class="img-fluid">
+                                <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">
                             </div>
                         </div>
                         <div class="col-lg-8 entry" style="margin-bottom: 0;box-shadow: none;">

@@ -15,7 +15,7 @@ class Controller extends BaseController
     // protected static $baseUri = 'http://localhost/kmg/ms/public/api/';
     // protected static $baseImg = 'http://localhost/kumalagroup/assets/img_marketing/';
 
-    protected static $baseUri = 'http://portal.kumalagroup.co.id/kmg/ms/public/api/';
+    protected static $baseUri = 'https://portal.kumalagroup.co.id/kmg/ms/public/api/';
     protected static $baseImg = 'https://kumalagroup.id/assets/img_marketing/';
 
     protected static $token;

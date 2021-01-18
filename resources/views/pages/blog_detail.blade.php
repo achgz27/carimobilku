@@ -36,7 +36,7 @@ $content = $data['deskripsi'];
                 <article class="entry entry-single">
 
                     <div class="entry-img">
-                        <img src="{{ $gambar }}" alt="" class="img-fluid">
+                        <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">
                     </div>
 
                     <h2 class="entry-title">
