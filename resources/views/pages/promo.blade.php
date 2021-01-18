@@ -48,8 +48,9 @@
             $gambar = $baseImg.'berita/'.(empty($promo['thumb'])?$promo['gambar']:'thumb/'.$promo['thumb']);
             $judul = Str::title($promo['judul']);
             $tipe = Str::ucfirst($promo['type']);
-            $tanggal = \Carbon\Carbon::parse($promo['updated_at'])->format('d-m-Y');
+            $tanggal = \Carbon\Carbon::parse($promo['created_at'])->format('d-m-Y');
             $content = Str::limit(strip_tags($promo['deskripsi']),200);
+            $uri = route('promoSlug',['slug'=>$promo['slug']]);
             @endphp
             <div class="col-lg-12 d-flex align-items-stretch" data-aos="fade-up">
                 <article class="entry" style="padding: 0 20px 0 0;">
@@ -62,13 +63,13 @@
                         </div>
                         <div class="col-lg-8 entry" style="margin-bottom: 0;box-shadow: none;">
                             <h2 class="entry-title">
-                                <a href="blog-single.html">{{ $judul }}</a>
+                                <a href="{{ $uri }}">{{ $judul }}</a>
                             </h2>
 
                             <div class="entry-meta">
                                 <ul>
-                                    <li class="d-flex align-items-center"><i class="icofont-folder"></i> <a href="blog-single.html">{{ $tipe }}</a></li>
-                                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="blog-single.html">{{ $tanggal }}</a></li>
+                                    <li class="d-flex align-items-center"><i class="icofont-folder"></i> <a href="javascript:void(0)">{{ $tipe }}</a></li>
+                                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="javascript:void(0)">{{ $tanggal }}</a></li>
                                 </ul>
                             </div>
 
@@ -77,7 +78,7 @@
                                     {{ $content }}
                                 </p>
                                 <div class="read-more">
-                                    <a href="blog-single.html">Selengkapnya</a>
+                                    <a href="{{ $uri }}">Selengkapnya</a>
                                 </div>
                             </div>
                         </div>

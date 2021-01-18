@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
+
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'detail'])->name('blogSlug');
+
 Route::get('/promo', [PromoController::class, 'index'])->name('promo');
+Route::get('/promo/{slug}', [PromoController::class, 'detail'])->name('promoSlug');
+
 Route::get('/hubungi', [HubungiController::class, 'index'])->name('hubungi');

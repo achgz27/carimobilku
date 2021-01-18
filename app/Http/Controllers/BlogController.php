@@ -24,4 +24,16 @@ class BlogController extends Controller
         $baseImg = parent::$baseImg;
         return view('pages.blog', compact('data', 'index', 'baseImg'));
     }
+
+    public function detail($slug)
+    {
+        $uri = parent::$baseUri . 'blog/' . $slug;
+        $response = Http::withToken(parent::$token)->get($uri);
+
+        $data = $response->json()['data'];
+
+        $index = 'blog';
+        $baseImg = parent::$baseImg;
+        return view('pages.blog_detail', compact('data', 'index', 'baseImg'));
+    }
 }

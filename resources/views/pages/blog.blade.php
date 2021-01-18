@@ -47,8 +47,9 @@
             $gambar = $baseImg.'berita/'.(empty($blog['thumb'])?$blog['gambar']:'thumb/'.$blog['thumb']);
             $judul = Str::title($blog['judul']);
             $tipe = Str::ucfirst($blog['type']);
-            $tanggal = \Carbon\Carbon::parse($blog['updated_at'])->format('d-m-Y');
+            $tanggal = \Carbon\Carbon::parse($blog['created_at'])->format('d-m-Y');
             $content = Str::limit(strip_tags($blog['deskripsi']),200);
+            $uri = route('blogSlug',['slug'=>$blog['slug']]);
             @endphp
 
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
@@ -59,7 +60,7 @@
                     </div>
 
                     <h2 class="entry-title">
-                        <a href="blog-single.html">{{ $judul }}</a>
+                        <a href="{{ $uri }}">{{ $judul }}</a>
                     </h2>
 
                     <div class="entry-meta">
@@ -74,7 +75,7 @@
                             {{ $content }}
                         </p>
                         <div class="read-more">
-                            <a href="blog-single.html">Selengkapnya</a>
+                            <a href="{{ $uri }}">Selengkapnya</a>
                         </div>
                     </div>
 
