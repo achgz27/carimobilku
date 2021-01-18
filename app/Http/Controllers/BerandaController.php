@@ -9,6 +9,6 @@ class BerandaController extends Controller
     public function index(Request $request)
     {
         $index = 'beranda';
-        return view('pages.beranda', compact('index'));
+        return view('maintenance', compact('index'));
     }
 }

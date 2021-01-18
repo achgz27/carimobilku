@@ -9,6 +9,6 @@ class HubungiController extends Controller
     public function index(Request $request)
     {
         $index = 'hubungi';
-        return view('pages.hubungi', compact('index'));
+        return view('maintenance', compact('index'));
     }
 }
