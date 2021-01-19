@@ -1,5 +1,16 @@
 @extends('app')
 
+@section('style')
+<style>
+    .error {
+        color: red;
+        font-size: 13px;
+        padding-left: .75rem;
+        margin-bottom: 0;
+    }
+</style>
+@endsection
+
 @section('content')
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
@@ -26,7 +37,7 @@
 
         <div class="row mt-5">
 
-            <div class="col-lg-4">
+            <div class="col-md-6 col-lg-4">
                 <div class="info">
                     <div class="address">
                         <i class="icofont-google-map"></i>
@@ -50,33 +61,23 @@
 
             </div>
 
-            <div class="col-lg-8 mt-5 mt-lg-0">
+            <div class="col-md-6 col-lg-8 mt-5 mt-md-0">
 
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                    <div class="form-row">
-                        <div class="col-md-6 form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                            <div class="validate"></div>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validate"></div>
-                        </div>
+                <form class="php-email-form" id="form">
+                    <div class="form-group">
+                        <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama lengkap" maxlength="100" data-msg-required="Silahkan masukkan nama anda" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                        <div class="validate"></div>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-msg-email="Email anda tidak valid" data-msg-required="Silahkan masukkan email anda" required>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                        <div class="validate"></div>
+                        <input type="text" class="form-control" name="telepon" id="telepon" placeholder="No. telepon" onkeydown="input_number(event)" data-msg-required="Silahkan masukkan no. telepon anda" required>
                     </div>
-                    <div class="mb-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="pesan" id="pesan" rows="3" data-msg-required="Silahkan masukkan pesan anda untuk kami" placeholder="Pesan" required></textarea>
                     </div>
-                    <div class="text-center"><button type="submit">Kirim Pesan</button></div>
+                    <input type="hidden" name="website" value="carimobilku">
+                    <div class="text-center"><button type="submit" id="submit">Kirim pesan</button></div>
                 </form>
 
             </div>
@@ -85,4 +86,47 @@
 
     </div>
 </section><!-- End Contact Section -->
+@endsection
+
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+<script>
+    $('#submit').on('click', function(event) {
+        event.preventDefault()
+
+        let ini = $('#submit')
+        let form = $('#form')
+
+        if (form.valid()) {
+            let data = form.serializeArray()
+
+            $.ajax({
+                type: 'post',
+                url: location,
+                data: {
+                    _submit: true,
+                    _token: '{{ csrf_token() }}',
+                    ...data
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    ini.prop('disabled', true)
+                    ini.html('Mengirimkan pesan...')
+                },
+                success: function(response) {
+                    ini.prop('disabled', false)
+                    ini.html('Kirim pesan')
+
+                    if (response.status === true) {
+                        form.trigger('reset')
+                        alert('Terima kasih, wiraniaga kami akan segera menghubungi anda')
+                        return false
+                    }
+
+                    alert(response.msg)
+                }
+            });
+        }
+    })
+</script>
 @endsection

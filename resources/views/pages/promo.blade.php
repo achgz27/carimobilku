@@ -42,7 +42,6 @@
     <div class="container">
 
         <div class="row">
-
             @foreach($data['promos'] as $promo)
             @php
             $gambar = $baseImg.'berita/'.(empty($promo['thumb'])?$promo['gambar']:'thumb/'.$promo['thumb']);
@@ -53,7 +52,7 @@
             $uri = route('promoSlug',['slug'=>$promo['slug']]);
             @endphp
             <div class="col-lg-12 d-flex align-items-stretch" data-aos="fade-up">
-                <article class="entry" style="padding: 0 20px 0 0;">
+                <article class="entry" style="padding: 0 20px 0 20px;">
 
                     <div class="row">
                         <div class="col-lg-4 entry" style="padding: 0;margin-bottom: 0;box-shadow: none;">

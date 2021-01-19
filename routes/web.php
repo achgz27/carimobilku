@@ -27,4 +27,4 @@ Route::get('/blog/{slug}', [BlogController::class, 'detail'])->name('blogSlug');
 Route::get('/promo', [PromoController::class, 'index'])->name('promo');
 Route::get('/promo/{slug}', [PromoController::class, 'detail'])->name('promoSlug');
 
-Route::get('/hubungi', [HubungiController::class, 'index'])->name('hubungi');
+Route::match(['get', 'post'], '/hubungi', [HubungiController::class, 'index'])->name('hubungi');
