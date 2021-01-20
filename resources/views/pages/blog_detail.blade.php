@@ -1,11 +1,27 @@
 @extends('app')
 
+@section('style')
+<style>
+    .owl-carousel.dots-morphing .owl-dots .owl-dot span {
+        width: 20px;
+        height: 6px;
+        -webkit-transition: ease width 300ms;
+        transition: ease width 300ms;
+    }
+
+    .owl-carousel.dots-morphing .owl-dots .owl-dot.active span,
+    .owl-carousel.dots-morphing .owl-dots .owl-dot:hover span {
+        width: 40px;
+    }
+</style>
+@endsection
+
 @php
-$gambar = $baseImg.'berita/'.$data['gambar'];
-$judul = Str::title($data['judul']);
-$tipe = Str::ucfirst($data['type']);
-$tanggal = \Carbon\Carbon::parse($data['created_at'])->format('d-m-Y');
-$content = $data['deskripsi'];
+$gambar = $baseImg.'berita/'.$data['blog']['gambar'];
+$judul = Str::title($data['blog']['judul']);
+$tipe = Str::ucfirst($data['blog']['type']);
+$tanggal = \Carbon\Carbon::parse($data['blog']['created_at'])->format('d-m-Y');
+$content = $data['blog']['deskripsi'];
 @endphp
 
 @section('content')
@@ -33,7 +49,7 @@ $content = $data['deskripsi'];
 
             <div class="col-lg-12 entries">
 
-                <article class="entry entry-single">
+                <article class="entry entry-single" style="padding: 0;margin-bottom: 0;box-shadow: none;">
 
                     <div class="entry-img">
                         <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">
@@ -78,4 +94,78 @@ $content = $data['deskripsi'];
 
     </div>
 </section><!-- End Blog Section -->
+
+<section id="blog" class="blog">
+    <div class="container">
+        <div class="section-title">
+            <h2>Blog</h2>
+            <p>Postingan terbaru</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex align-items-stretch" data-aos="fade-up">
+                <div class="owl-carousel owl-theme dots-morphing">
+                    @foreach($data['related'] as $blog)
+                    @php
+                    $judul = Str::title($blog['judul']);
+                    $tipe = Str::ucfirst($blog['type']);
+                    $tanggal = \Carbon\Carbon::parse($blog['created_at'])->format('d-m-Y');
+                    $content = Str::limit(strip_tags($blog['deskripsi']),200);
+                    $uri = route('blogSlug',['slug'=>$blog['slug']]);
+                    @endphp
+                    <div class="item">
+                        <article class="entry" style="margin-bottom: 20px;">
+                            <h2 class="entry-title">
+                                <a href="{{ $uri }}">{{ $judul }}</a>
+                            </h2>
+
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="icofont-folder"></i> <a href="javascript:void(0)">{{ $tipe }}</a></li>
+                                    <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="javascript:void(0)">{{ $tanggal }}</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="entry-content">
+                                <p>
+                                    {{ $content }}
+                                </p>
+                                <div class="read-more">
+                                    <a href="{{ $uri }}">Selengkapnya</a>
+                                </div>
+                            </div>
+
+                        </article><!-- End blog entry -->
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
+
+@section('script')
+<script>
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 30,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        autoHeight: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+</script>
 @endsection

@@ -31,7 +31,6 @@ class BlogController extends Controller
         $response = Http::withToken(parent::$token)->get($uri);
 
         $data = $response->json()['data'];
-
         $index = 'blog';
         $baseImg = parent::$baseImg;
         return view('pages.blog_detail', compact('data', 'index', 'baseImg'));
