@@ -67,11 +67,13 @@
                     <div class="form-group">
                         <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama lengkap" maxlength="100" data-msg-required="Silahkan masukkan nama anda" required>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-msg-email="Email anda tidak valid" data-msg-required="Silahkan masukkan email anda" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="telepon" id="telepon" placeholder="No. telepon" onkeydown="input_number(event)" data-msg-required="Silahkan masukkan no. telepon anda" required>
+                    <div class="form-row">
+                        <div class="col-lg-6 form-group">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-msg-email="Email anda tidak valid" data-msg-required="Silahkan masukkan email anda" required>
+                        </div>
+                        <div class="col-lg-6 form-group">
+                            <input type="text" class="form-control" name="telepon" id="telepon" placeholder="No. telepon" onkeydown="input_number(event)" data-msg-required="Silahkan masukkan no. telepon anda" required>
+                        </div>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" name="pesan" id="pesan" rows="3" data-msg-required="Silahkan masukkan pesan anda untuk kami" placeholder="Pesan" required></textarea>
