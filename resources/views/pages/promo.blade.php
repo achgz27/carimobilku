@@ -1,26 +1,5 @@
 @extends('app')
 
-@section('style')
-<style>
-    .pagination {
-        display: inline-flex;
-    }
-
-    .page-item.active .page-link {
-        background-color: #e1444d;
-        border-color: #e1444d;
-    }
-
-    .page-link {
-        color: #556270;
-    }
-
-    .page-link:hover {
-        color: #e1444d;
-    }
-</style>
-@endsection
-
 @section('content')
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
@@ -57,7 +36,7 @@
                     <div class="row">
                         <div class="col-lg-4 entry" style="padding: 0;margin-bottom: 0;box-shadow: none;">
                             <div class="entry-img" style="margin-bottom: 0;">
-                                <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">
+                                <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
                             </div>
                         </div>
                         <div class="col-lg-8 entry" style="margin-bottom: 0;box-shadow: none;">

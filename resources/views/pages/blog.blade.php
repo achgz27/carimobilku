@@ -1,26 +1,5 @@
 @extends('app')
 
-@section('style')
-<style>
-    .pagination {
-        display: inline-flex;
-    }
-
-    .page-item.active .page-link {
-        background-color: #e1444d;
-        border-color: #e1444d;
-    }
-
-    .page-link {
-        color: #556270;
-    }
-
-    .page-link:hover {
-        color: #e1444d;
-    }
-</style>
-@endsection
-
 @section('content')
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
@@ -56,12 +35,12 @@
                 <article class="entry">
 
                     <div class="entry-img">
-                        <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">
+                        <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
                     </div>
 
-                    <h2 class="entry-title">
+                    <h3 class="entry-title">
                         <a href="{{ $uri }}">{{ $judul }}</a>
-                    </h2>
+                    </h3>
 
                     <div class="entry-meta">
                         <ul>

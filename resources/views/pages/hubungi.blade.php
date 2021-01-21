@@ -1,16 +1,5 @@
 @extends('app')
 
-@section('style')
-<style>
-    .error {
-        color: red;
-        font-size: 13px;
-        padding-left: .75rem;
-        margin-bottom: 0;
-    }
-</style>
-@endsection
-
 @section('content')
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">

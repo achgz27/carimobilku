@@ -33,7 +33,7 @@ $content = $data['deskripsi'];
 
             <div class="col-lg-12 entries">
 
-                <article class="entry entry-single">
+                <article class="entry entry-single" style="padding: 0;box-shadow: none;">
 
                     <div class="entry-img">
                         <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">

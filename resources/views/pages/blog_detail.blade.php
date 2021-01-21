@@ -1,21 +1,5 @@
 @extends('app')
 
-@section('style')
-<style>
-    .owl-carousel.dots-morphing .owl-dots .owl-dot span {
-        width: 20px;
-        height: 6px;
-        -webkit-transition: ease width 300ms;
-        transition: ease width 300ms;
-    }
-
-    .owl-carousel.dots-morphing .owl-dots .owl-dot.active span,
-    .owl-carousel.dots-morphing .owl-dots .owl-dot:hover span {
-        width: 40px;
-    }
-</style>
-@endsection
-
 @php
 $gambar = $baseImg.'berita/'.$data['blog']['gambar'];
 $judul = Str::title($data['blog']['judul']);
@@ -107,6 +91,7 @@ $content = $data['blog']['deskripsi'];
                 <div class="owl-carousel owl-theme dots-morphing">
                     @foreach($data['related'] as $blog)
                     @php
+                    $gambar = $baseImg.'berita/'.(empty($blog['thumb'])?$blog['gambar']:'thumb/'.$blog['thumb']);
                     $judul = Str::title($blog['judul']);
                     $tipe = Str::ucfirst($blog['type']);
                     $tanggal = \Carbon\Carbon::parse($blog['created_at'])->format('d-m-Y');
@@ -115,6 +100,10 @@ $content = $data['blog']['deskripsi'];
                     @endphp
                     <div class="item">
                         <article class="entry" style="margin-bottom: 20px;">
+                            <div class="entry-img">
+                                <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
+                            </div>
+
                             <h2 class="entry-title">
                                 <a href="{{ $uri }}">{{ $judul }}</a>
                             </h2>

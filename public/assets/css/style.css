@@ -2139,3 +2139,49 @@ section {
 #footer .credits a:hover {
   color: white;
 }
+
+/* added by gaza */
+.pagination {
+  display: inline-flex;
+}
+
+.page-item.active .page-link {
+  background-color: #e1444d;
+  border-color: #e1444d;
+}
+
+.page-link {
+  color: #556270;
+}
+
+.page-link:hover {
+  color: #e1444d;
+}
+
+.zoom_img {
+  transition: transform .5s;
+}
+
+.zoom_img:hover {
+  transform: scale(1.05);
+  overflow: hidden;
+}
+
+.owl-carousel.dots-morphing .owl-dots .owl-dot span {
+  width: 20px;
+  height: 6px;
+  -webkit-transition: ease width 300ms;
+  transition: ease width 300ms;
+}
+
+.owl-carousel.dots-morphing .owl-dots .owl-dot.active span,
+.owl-carousel.dots-morphing .owl-dots .owl-dot:hover span {
+  width: 40px;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  padding-left: .75rem;
+  margin-bottom: 0;
+}
