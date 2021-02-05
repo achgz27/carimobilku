@@ -1,5 +1,19 @@
 @extends('app')
 
+@section('style')
+<style>
+    #customCard {
+        box-shadow: none;
+        border: .5px solid #dee2e6;
+        border-radius: .25rem;
+    }
+
+    #customCard:hover {
+        border: .5px solid #e1444d;
+    }
+</style>
+@endsection
+
 @section('content')
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
@@ -32,7 +46,7 @@
             @endphp
 
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                <article class="entry">
+                <article class="entry" id="customCard">
 
                     <div class="entry-img">
                         <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
@@ -54,7 +68,7 @@
                             {{ $content }}
                         </p>
                         <div class="read-more">
-                            <a href="{{ $uri }}">Selengkapnya</a>
+                            <a href="{{ $uri }}">Baca selengkapnya</a>
                         </div>
                     </div>
 

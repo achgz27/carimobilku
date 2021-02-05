@@ -67,7 +67,6 @@
                     <div class="form-group">
                         <textarea class="form-control" name="pesan" id="pesan" rows="3" data-msg-required="Silahkan masukkan pesan anda untuk kami" placeholder="Pesan" required></textarea>
                     </div>
-                    <input type="hidden" name="website" value="carimobilku">
                     <div class="text-center"><button type="submit" id="submit">Kirim pesan</button></div>
                 </form>
 

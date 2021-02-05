@@ -2180,7 +2180,7 @@ section {
 }
 
 .error {
-  color: red;
+  color: #e1444d;
   font-size: 13px;
   padding-left: .75rem;
   margin-bottom: 0;

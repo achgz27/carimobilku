@@ -1,5 +1,21 @@
 @extends('app')
 
+@section('style')
+<style>
+    #customCard {
+        box-shadow: none;
+        border: .5px solid #dee2e6;
+        border-radius: .25rem;
+    }
+
+    #customCard:hover {
+        border: .5px solid #e1444d;
+    }
+</style>
+@endsection
+
+@section('content')
+
 @php
 $gambar = $baseImg.'berita/'.$data['blog']['gambar'];
 $judul = Str::title($data['blog']['judul']);
@@ -8,7 +24,6 @@ $tanggal = \Carbon\Carbon::parse($data['blog']['created_at'])->format('d-m-Y');
 $content = $data['blog']['deskripsi'];
 @endphp
 
-@section('content')
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
@@ -40,7 +55,7 @@ $content = $data['blog']['deskripsi'];
                     </div>
 
                     <h2 class="entry-title">
-                        <a href="blog-single.html">{{ $judul }}</a>
+                        <a href="javascript:void(0)">{{ $judul }}</a>
                     </h2>
 
                     <div class="entry-meta">
@@ -79,7 +94,7 @@ $content = $data['blog']['deskripsi'];
     </div>
 </section><!-- End Blog Section -->
 
-<section id="blog" class="blog">
+<section class="blog">
     <div class="container">
         <div class="section-title">
             <h2>Blog</h2>
@@ -99,7 +114,7 @@ $content = $data['blog']['deskripsi'];
                     $uri = route('blogSlug',['slug'=>$blog['slug']]);
                     @endphp
                     <div class="item">
-                        <article class="entry" style="margin-bottom: 20px;">
+                        <article class="entry" id="customCard" style="margin-bottom: 20px;">
                             <div class="entry-img">
                                 <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
                             </div>
@@ -120,7 +135,7 @@ $content = $data['blog']['deskripsi'];
                                     {{ $content }}
                                 </p>
                                 <div class="read-more">
-                                    <a href="{{ $uri }}">Selengkapnya</a>
+                                    <a href="{{ $uri }}">Baca selengkapnya</a>
                                 </div>
                             </div>
 

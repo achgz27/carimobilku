@@ -1,5 +1,33 @@
 @extends('app')
 
+@section('style')
+<style>
+    #customCard {
+        box-shadow: none;
+        border: .5px solid #dee2e6;
+        border-radius: .25rem;
+    }
+
+    #customCard:hover {
+        border: .5px solid #e1444d;
+    }
+
+    #customContent {
+        margin-bottom: 0;
+        box-shadow: none;
+        padding: 20px 35px 20px 20px;
+    }
+
+    @media (max-width:992px) {
+        #customContent {
+            margin-bottom: 0;
+            box-shadow: none;
+            padding: 20px 35px 20px 35px;
+        }
+    }
+</style>
+@endsection
+
 @section('content')
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
@@ -31,15 +59,15 @@
             $uri = route('promoSlug',['slug'=>$promo['slug']]);
             @endphp
             <div class="col-lg-12 d-flex align-items-stretch" data-aos="fade-up">
-                <article class="entry" style="padding: 0 20px 0 20px;">
+                <article class="entry" id="customCard" style="padding: 0;">
 
                     <div class="row">
-                        <div class="col-lg-4 entry" style="padding: 0;margin-bottom: 0;box-shadow: none;">
+                        <div class="col-lg-4 entry my-auto" style="padding-bottom: 0;margin-bottom: 0;box-shadow: none;">
                             <div class="entry-img" style="margin-bottom: 0;">
                                 <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
                             </div>
                         </div>
-                        <div class="col-lg-8 entry" style="margin-bottom: 0;box-shadow: none;">
+                        <div class="col-lg-8 entry my-auto" id="customContent">
                             <h2 class="entry-title">
                                 <a href="{{ $uri }}">{{ $judul }}</a>
                             </h2>
@@ -56,7 +84,7 @@
                                     {{ $content }}
                                 </p>
                                 <div class="read-more">
-                                    <a href="{{ $uri }}">Selengkapnya</a>
+                                    <a href="{{ $uri }}">Baca selengkapnya</a>
                                 </div>
                             </div>
                         </div>

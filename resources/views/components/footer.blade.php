@@ -34,9 +34,9 @@
                 <div class="col-lg-2 col-md-6 footer-newsletter mx-auto">
                     <h4>Sosial Media</h4>
                     <div class="social-links mt-3">
-                        <a href="https://www.facebook.com/kumalagroup1/" class="facebook"><i class="bx bxl-facebook"></i></a>
-                        <a href="https://www.instagram.com/kumalagroup/" class="instagram"><i class="bx bxl-instagram"></i></a>
-                        <a href="https://www.youtube.com/channel/UC7R09sGLSsz-Ky1nQs1Qbiw" class="youtube"><i class="bx bxl-youtube"></i></a>
+                        <a href="https://www.facebook.com/carimobilku" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                        <a href="https://www.instagram.com/carimobilku_/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UC7R09sGLSsz-Ky1nQs1Qbiw" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
                     </div>
                 </div>
 

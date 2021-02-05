@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class BerandaController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
+        $uri = parent::$baseUri . 'beranda';
+        $response = Http::withToken(parent::$token)->get($uri);
+
+        $data = $response->json()['data'];
+
         $index = 'beranda';
-        return view('maintenance', compact('index'));
+        $baseImg = parent::$baseImg;
+        return view('pages.beranda', compact('data', 'index', 'baseImg'));
     }
 }
