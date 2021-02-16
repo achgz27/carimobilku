@@ -12,11 +12,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    // protected static $baseUri = 'http://localhost/kmg/ms/public/api/';
-    // protected static $baseImg = 'http://localhost/kumalagroup/assets/img_marketing/';
+    protected static $baseUri = 'http://localhost/kmg/ms/public/api/';
+    protected static $baseImg = 'http://localhost/kumalagroup/assets/img_marketing/';
 
-    protected static $baseUri = 'https://portal.kumalagroup.co.id/kmg/ms/public/api/';
-    protected static $baseImg = 'https://kumalagroup.id/assets/img_marketing/';
+    // protected static $baseUri = 'https://portal.kumalagroup.co.id/kmg/ms/public/api/';
+    // protected static $baseImg = 'https://kumalagroup.id/assets/img_marketing/';
 
     protected static $token;
 
@@ -29,7 +29,9 @@ class Controller extends BaseController
 
     public static function auth()
     {
-        $response = Http::withBody(json_encode(['email' => 'gaza@kumalagroup.com', 'password' => 'Mobile@pisrvcs']), 'application/json')
+        $auth = ['email' => 'gaza@kumalagroup.com', 'password' => 'Mobile@pisrvcs'];
+
+        $response = Http::withBody(json_encode($auth), 'application/json')
             ->post(self::$baseUri . 'auth');
         $result = $response->json();
 
@@ -43,7 +45,7 @@ class Controller extends BaseController
         $token = session('apiToken');
 
         if ($token === null) {
-            self::auth();
+            return self::auth();
         }
 
         $response = Http::withToken($token)
@@ -51,7 +53,7 @@ class Controller extends BaseController
         $result = $response->json();
 
         if ($result['status'] === false) {
-            self::auth();
+            return self::auth();
         }
     }
 }

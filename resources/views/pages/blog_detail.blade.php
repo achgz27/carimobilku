@@ -152,7 +152,6 @@ $content = $data['blog']['deskripsi'];
 @section('script')
 <script>
     $('.owl-carousel').owlCarousel({
-        loop: true,
         margin: 30,
         dots: true,
         autoplay: true,

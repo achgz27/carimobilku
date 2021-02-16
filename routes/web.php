@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GarasiController;
 use App\Http\Controllers\HubungiController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\TentangController;
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/tentang', [TentangController::class, 'index'])->name('tentang');
+
+Route::get('/garasi', [GarasiController::class, 'index'])->name('garasi');
+Route::get('/garasi/{slug}', [GarasiController::class, 'detail'])->name('garasiSlug');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{slug}', [BlogController::class, 'detail'])->name('blogSlug');
