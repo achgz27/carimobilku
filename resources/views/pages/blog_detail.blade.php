@@ -98,7 +98,7 @@ $content = $data['blog']['deskripsi'];
     <div class="container">
         <div class="section-title">
             <h2>Blog</h2>
-            <p>Postingan terbaru</p>
+            <p style="font-size: 30px;">Postingan terbaru</p>
         </div>
 
         <div class="row">

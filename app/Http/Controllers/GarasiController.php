@@ -10,15 +10,15 @@ class GarasiController extends Controller
     public function index(Request $request)
     {
         if (isset($request->page)) {
-            $uri = parent::$baseUri . 'blog?page=' . $request->page;
+            $uri = parent::$baseUri . 'garasi?page=' . $request->page;
         } else {
-            $uri = parent::$baseUri . 'blog';
+            $uri = parent::$baseUri . 'garasi';
         }
 
         $response = Http::withToken(parent::$token)->get($uri);
 
         $data = $response->json()['data'];
-        $data['links'] = str_replace(parent::$baseUri . 'blog', route('blog'), $data['links']);
+        $data['links'] = str_replace(parent::$baseUri . 'garasi', route('garasi'), $data['links']);
 
         $index = 'garasi';
         $baseImg = parent::$baseImg;
@@ -27,12 +27,13 @@ class GarasiController extends Controller
 
     public function detail($slug)
     {
-        $uri = parent::$baseUri . 'blog/' . $slug;
+        $uri = parent::$baseUri . 'garasi/' . $slug;
         $response = Http::withToken(parent::$token)->get($uri);
 
         $data = $response->json()['data'];
-        $index = 'blog';
+
+        $index = 'garasi';
         $baseImg = parent::$baseImg;
-        return view('pages.blog_detail', compact('data', 'index', 'baseImg'));
+        return view('pages.garasi_detail', compact('data', 'index', 'baseImg'));
     }
 }
