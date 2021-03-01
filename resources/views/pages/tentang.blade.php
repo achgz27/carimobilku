@@ -26,10 +26,10 @@
                 </div>
             </div>
             <div class="col-md-8 col-lg-9 pt-4 pt-lg-0">
-                <p>
+                <p style="text-align: justify;">
                     <strong>Carimobilku</strong> (PT. Kumala Sukses Cemerlang) merupakan Platform Jual Beli Mobil Bekas, sebagai bagian dari Layanan Kumala Group untuk mempermudah pelanggan dalam memiliki mobil impian. yang beralamat di Pettarani Business Center, JL. A. P. Pettarani Kav E18 No E10, Kota Makassar.
                 </p>
-                <p class="font-italic">
+                <p class="font-italic" style="text-align: justify;">
                     Memiliki area layanan yang tersebar di Sulawesi, Maluku dan Bali yang memberikan penawaran terbaik dan layanan terlengkap. Menawarkan mobil terpilih dalam kondisi terbaik dengan informasi paling rinci adalah prioritas utama.
                 </p>
             </div>
