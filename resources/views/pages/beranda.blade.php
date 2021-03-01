@@ -95,7 +95,7 @@
         </div>
 
         <div class="text-center">
-            <a href="{{ route('blog') }}" class="get-started-btn" style="margin: 0 0 1rem 0;">Lihat lainnya</a>
+            <a href="{{ route('garasi') }}" class="get-started-btn" style="margin: 0 0 1rem 0;">Lihat lainnya</a>
         </div>
     </div>
 </section>
