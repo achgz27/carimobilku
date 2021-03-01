@@ -31,7 +31,7 @@
 </section><!-- End Breadcrumbs -->
 
 <!-- ======= Blog Section ======= -->
-<section class="contact">
+<section class="blog contact">
     <div class="container">
         <form class="php-email-form" id="form">
             <div class="row">

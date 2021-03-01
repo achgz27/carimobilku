@@ -17,7 +17,7 @@
 </section><!-- End Breadcrumbs -->
 
 <!-- ======= Contact Section ======= -->
-<section id="contact" class="contact">
+<section id="contact" class="blog contact">
     <div class="container">
 
         <div>

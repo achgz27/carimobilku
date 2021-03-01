@@ -16,7 +16,7 @@
 </section><!-- End Breadcrumbs -->
 
 <!-- ======= About Section ======= -->
-<section id="about" class="about">
+<section id="about" class="blog about">
     <div class="container">
 
         <div class="row content">
