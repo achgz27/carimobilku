@@ -31,7 +31,92 @@
 </section><!-- End Breadcrumbs -->
 
 <!-- ======= Blog Section ======= -->
-<section id="blog" class="blog">
+<section class="contact">
+    <div class="container">
+        <form class="php-email-form" id="form">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="font-weight-bold mb-3">Filter</h4>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="form-group mb-2">
+                        <select name="brand" id="brand" class="form-control">
+                            <option value="" selected>Brand</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="input-group mb-2">
+                        <input type="text" name="harga_awal" id="harga_awal" class="form-control" placeholder="Harga Awal">
+                        <input type="text" name="harga_akhir" id="harga_akhir" class="form-control" placeholder="Harga Akhir">
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="form-group mb-2">
+                        <select name="transmisi" id="transmisi" class="form-control">
+                            <option value="" selected>Transmisi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="form-group mb-2">
+                        <select name="kilometer" id="kilometer" class="form-control">
+                            <option value="" selected>Kilometer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-12 collapse" id="collapse-filter">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group mb-2">
+                                <select name="lokasi" id="lokasi" class="form-control">
+                                    <option value="" selected>Lokasi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group mb-2">
+                                <select name="bahan_bakar" id="bahan_bakar" class="form-control">
+                                    <option value="" selected>Bahan Bakar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group mb-2">
+                                <select name="tempat_duduk" id="tempat_duduk" class="form-control">
+                                    <option value="" selected>Tempat Duduk</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group mb-2">
+                                <select name="warna" id="warna" class="form-control">
+                                    <option value="" selected>Warna</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="input-group mb-2">
+                                <input type="text" name="tahun_awal" id="tahun_awal" class="form-control" placeholder="Tahun Awal">
+                                <input type="text" name="tahun_akhir" id="tahun_akhir" class="form-control" placeholder="Tahun Akhir">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="text-right">
+                        <a href="#collapse-filter" data-toggle="collapse" class="btn btn-danger btn-sm" style="font-size: 13px;"><i class="icofont-caret-down"></i> Filter lainnya</a>
+                        <a href="{{ route('garasi') }}" class="btn btn-outline-danger btn-sm" style="font-size: 13px;">Reset</a>
+                        <a href="javascript:void(0)" id="submit" class="btn btn-outline-danger btn-sm" style="font-size: 13px;">Submit</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section><!-- End Blog Section -->
+
+<!-- ======= Blog Section ======= -->
+<section id="blog" class="blog section-bg">
     <div class="container">
 
         <div class="row">
@@ -50,7 +135,7 @@
 
             <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
                 <article class="entry" id="customCard">
-                
+
                     <div class="entry-img">
                         <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
                     </div>
@@ -87,4 +172,10 @@
 
     </div>
 </section><!-- End Blog Section -->
+@endsection
+
+@section('script')
+<script>
+
+</script>
 @endsection
