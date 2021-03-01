@@ -100,7 +100,7 @@
     </div>
 </section>
 
-<section id="blog" class="blog">
+<section id="blog" class="blog section-bg">
     <div class="container">
         <div class="section-title">
             <h2>Blog</h2>
