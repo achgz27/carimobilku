@@ -53,10 +53,10 @@
                     @php
                     $gambar = $baseImg.'uc_unit/'.$inventory['gambar'];
                     $nama = Str::title($inventory['nama']);
-                    $harga = $inventory['harga'];
+                    $harga = number_format($inventory['harga'], 0, ',', '.');
                     $tahun = $inventory['tahun'];
                     $transmisi = $inventory['transmisi'];
-                    $kilometer = $inventory['kilometer'];
+                    $kilometer = number_format($inventory['kilometer'], 0, ',', '.');;
                     $lokasi = $inventory['lokasi'];
                     $uri = route('garasiSlug',['slug'=>$inventory['slug']]);
                     @endphp
@@ -81,7 +81,7 @@
                                     </ul>
                                     <ul class="tags">
                                         <li><a href="javascript:void(0)">{{ $transmisi }}</a></li>
-                                        <li><a href="javascript:void(0)">{{ $kilometer }}</a></li>
+                                        <li><a href="javascript:void(0)">{{ $kilometer }} Km</a></li>
                                         <li><a href="javascript:void(0)">{{ $lokasi }}</a></li>
                                     </ul>
                                 </div>
@@ -95,7 +95,7 @@
         </div>
 
         <div class="text-center">
-            <a href="{{ route('garasi') }}" class="get-started-btn" style="margin: 0 0 1rem 0;">Lihat lainnya</a>
+            <a href="{{ route('garasi', ['page' => 1]) }}" class="get-started-btn" style="margin: 0 0 1rem 0;">Lihat lainnya</a>
         </div>
     </div>
 </section>

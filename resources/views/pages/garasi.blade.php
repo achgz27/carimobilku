@@ -40,28 +40,44 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group mb-2">
-                        <select name="brand" id="brand" class="form-control">
-                            <option value="" selected>Brand</option>
+                        <select name="brand" id="brand" class="form-control select_picker" style="width: 100%">
+                            <option value="">Semua Brand</option>
+                            @foreach($data['brand'] as $value)
+                            <option value="{{ $value['id'] }}" {{ Request::get('brand') == $value['id'] ? 'selected' : '' }}>{{ $value['text'] }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="input-group mb-2">
-                        <input type="text" name="harga_awal" id="harga_awal" class="form-control" placeholder="Harga Awal">
-                        <input type="text" name="harga_akhir" id="harga_akhir" class="form-control" placeholder="Harga Akhir">
+                        <input type="number" name="harga_awal" id="harga_awal" class="form-control" placeholder="Harga Awal" value="{{ Request::get('harga_awal') }}">
+                        <input type="number" name="harga_akhir" id="harga_akhir" class="form-control" placeholder="Harga Akhir" value="{{ Request::get('harga_akhir') }}">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group mb-2">
-                        <select name="transmisi" id="transmisi" class="form-control">
+                        <select name="transmisi" id="transmisi" class="form-control select_picker" style="width: 100%">
                             <option value="" selected>Transmisi</option>
+                            @foreach($data['transmisi'] as $value)
+                            <option value="{{ $value['id'] }}" {{ Request::get('transmisi') == $value['id'] ? 'selected' : '' }}>{{ $value['text'] }}</option>
+                            @endforeach
+                        </select>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="form-group mb-2">
-                        <select name="kilometer" id="kilometer" class="form-control">
-                            <option value="" selected>Kilometer</option>
+                        <select name="kilometer" id="kilometer" class="form-control select_picker" style="width: 100%">
+                            <option value="">Kilometer</option>
+                            <option value="10000">
+                                < 10.000 Km</option>
+                            <option value="50000">
+                                < 50.000 Km</option>
+                            <option value="100000">
+                                < 100.000 Km</option>
+                            <option value="150000">
+                                < 150.000 Km</option>
+                            <option value="200000">200.000 Km +</option>
                         </select>
                     </div>
                 </div>
@@ -69,45 +85,56 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-3">
                             <div class="form-group mb-2">
-                                <select name="lokasi" id="lokasi" class="form-control">
-                                    <option value="" selected>Lokasi</option>
+                                <select name="lokasi" id="lokasi" class="form-control select_picker" style="width: 100%">
+                                    <option value="">Semua Lokasi</option>
+                                    @foreach($data['lokasi'] as $value)
+                                    <option value="{{ $value['id'] }}" {{ Request::get('lokasi') == $value['id'] ? 'selected' : '' }}>{{ $value['text'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="form-group mb-2">
-                                <select name="bahan_bakar" id="bahan_bakar" class="form-control">
-                                    <option value="" selected>Bahan Bakar</option>
+                                <select name="bahan_bakar" id="bahan_bakar" class="form-control select_picker" style="width: 100%">
+                                    <option value="">Bahan Bakar</option>
+                                    @foreach($data['bahan_bakar'] as $value)
+                                    <option value="{{ $value['id'] }}" {{ Request::get('bahan_bakar') == $value['id'] ? 'selected' : '' }}>{{ $value['text'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="form-group mb-2">
-                                <select name="tempat_duduk" id="tempat_duduk" class="form-control">
+                                <select name="tempat_duduk" id="tempat_duduk" class="form-control select_picker" style="width: 100%">
                                     <option value="" selected>Tempat Duduk</option>
+                                    @foreach($data['tempat_duduk'] as $value)
+                                    <option value="{{ $value['id'] }}" {{ Request::get('tempat_duduk') == $value['id'] ? 'selected' : '' }}>{{ $value['text'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="form-group mb-2">
-                                <select name="warna" id="warna" class="form-control">
-                                    <option value="" selected>Warna</option>
+                                <select name="warna" id="warna" class="form-control select_picker" style="width: 100%">
+                                    <option value="" selected>Semua Warna</option>
+                                    @foreach($data['warna'] as $value)
+                                    <option value="{{ $value['id'] }}" {{ Request::get('warna') == $value['id'] ? 'selected' : '' }}>{{ $value['text'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="input-group mb-2">
-                                <input type="text" name="tahun_awal" id="tahun_awal" class="form-control" placeholder="Tahun Awal">
-                                <input type="text" name="tahun_akhir" id="tahun_akhir" class="form-control" placeholder="Tahun Akhir">
+                                <input type="number" name="tahun_awal" id="tahun_awal" class="form-control" placeholder="Tahun Awal" value="{{ Request::get('tahun_awal') }}">
+                                <input type="number" name="tahun_akhir" id="tahun_akhir" class="form-control" placeholder="Tahun Akhir" value="{{ Request::get('tahun_awal') }}">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="text-right">
-                        <a href="#collapse-filter" data-toggle="collapse" class="btn btn-danger btn-sm" style="font-size: 13px;"><i class="icofont-caret-down"></i> Filter lainnya</a>
-                        <a href="{{ route('garasi') }}" class="btn btn-outline-danger btn-sm" style="font-size: 13px;">Reset</a>
-                        <a href="javascript:void(0)" id="submit" class="btn btn-outline-danger btn-sm" style="font-size: 13px;">Submit</a>
+                        <a href="#collapse-filter" data-toggle="collapse" class="btn btn-outline-danger btn-sm" style="font-size: 13px;"><i class="icofont-caret-down"></i> Filter lainnya</a>
+                        <a href="javascript:void(0)" id="submit" class="btn btn-danger btn-sm" style="font-size: 13px;">Submit</a>
                     </div>
                 </div>
             </div>
@@ -118,64 +145,61 @@
 <!-- ======= Blog Section ======= -->
 <section id="blog" class="blog section-bg">
     <div class="container">
-
-        <div class="row">
-            @foreach($data['inventories'] as $inventory)
-            @php
-            $gambar = $baseImg.'uc_unit/'.$inventory['gambar'];
-            $nama = Str::title($inventory['nama']);
-            $harga = $inventory['harga'];
-            $tanggal = \Carbon\Carbon::parse($inventory['created_at'])->format('d-m-Y');
-            $tahun = $inventory['tahun'];
-            $transmisi = $inventory['transmisi'];
-            $kilometer = $inventory['kilometer'];
-            $lokasi = $inventory['lokasi'];
-            $uri = route('garasiSlug',['slug'=>$inventory['slug']]);
-            @endphp
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-                <article class="entry" id="customCard">
-
-                    <div class="entry-img">
-                        <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid zoom_img">
-                    </div>
-
-                    <h2 class="entry-title mb-2" style="font-size: 15px;line-height: 20px;font-weight: normal;">
-                        <a href="{{ $uri }}">{{ $nama }}</a>
-                    </h2>
-                    <h2 class="entry-title mb-3" style="color: #556270;">IDR {{ $harga }},-</h2>
-                    <div class="entry-footer clearfix">
-                        <div class="float-left">
-                            <ul class="cats">
-                                <li>
-                                    <h2 class="entry-title mb-0">
-                                        <a href="javascript:void(0)">{{ $tahun }}</a>
-                                    </h2>
-                                </li>
-                            </ul>
-                            <ul class="tags">
-                                <li><a href="javascript:void(0)">{{ $transmisi }}</a></li>
-                                <li><a href="javascript:void(0)">{{ $kilometer }}</a></li>
-                                <li><a href="javascript:void(0)">{{ $lokasi }}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </article><!-- End blog entry -->
-            </div>
-            @endforeach
-        </div>
-
-        <div class="text-center">
-            {!! $data['links'] !!}
-        </div>
-
+        <div class="row" id="inventory-container"></div>
+        <div class="text-center" id="inventory-link"></div>
     </div>
 </section><!-- End Blog Section -->
 @endsection
 
 @section('script')
 <script>
+    let selectPicker = $('.select_picker')
 
+    //init variable
+    let form = $('#form')
+
+    let inventoryContainer = $('#inventory-container')
+    let inventoryLink = $('#inventory-link')
+
+    $(document).ready(function() {
+        selectPicker.select2()
+        _showPage()
+    })
+
+    $(document).on('click', '#submit', function() {
+        let url = location.search.split('&')[0] + '&' + form.serialize()
+        _setUrl(url)
+        _showPage()
+    })
+
+    $(document).on('click', '.page-link', function(event) {
+        event.preventDefault()
+        let ini = $(this)
+        let url = ini.attr('href') + '&' + form.serialize()
+        _setUrl(url)
+        _showPage()
+    })
+
+    function _showPage(formData) {
+        $.ajax({
+            type: 'get',
+            url: location,
+            data: {
+                'MODTYPE': 'main',
+                'FD': location.search
+            },
+            dataType: 'json',
+            success: function(response) {
+                inventoryContainer.html(response.data.inventory)
+                inventoryLink.html(response.data.links)
+            }
+        })
+    }
+
+    function _setUrl(url) {
+        window.history.replaceState({
+            id: "100"
+        }, '', url)
+    }
 </script>
 @endsection

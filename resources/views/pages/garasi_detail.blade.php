@@ -26,10 +26,10 @@
 @php
 $nama = Str::title($data['inventory']['nama']);
 $content = $data['inventory']['deskripsi'];
-$harga = $data['inventory']['harga'];
+$harga = number_format($data['inventory']['harga'],0,',','.');
 $tahun = $data['inventory']['tahun'];
 $transmisi = $data['inventory']['transmisi'];
-$kilometer = $data['inventory']['kilometer'];
+$kilometer = number_format($data['inventory']['kilometer'],0,',','.');;
 $lokasi = $data['inventory']['lokasi'];
 
 $brand = $data['inventory']['brand'];
@@ -60,7 +60,7 @@ $video = $data['inventory']['video'];
             <h2></h2>
             <ol>
                 <li><a href="{{ route('beranda') }}">Home</a></li>
-                <li><a href="{{ route('garasi') }}">Garasi</a></li>
+                <li><a href="{{ route('garasi', ['page' => 1]) }}">Garasi</a></li>
                 <li>{{ $nama }}</li>
             </ol>
         </div>
@@ -81,7 +81,7 @@ $video = $data['inventory']['video'];
                         <ul>
                             <li class="d-flex align-items-center"><a href="javascript:void(0)" class="font-weight-bold" style="font-size: 20px;">{{ $tahun }}</a></li>
                             <li class="d-flex align-items-center"><i class="icofont-automation"></i> <a href="javascript:void(0)">{{ $transmisi }}</a></li>
-                            <li class="d-flex align-items-center"><i class="icofont-dashboard"></i> <a href="javascript:void(0)">{{ $kilometer }}</a></li>
+                            <li class="d-flex align-items-center"><i class="icofont-dashboard"></i> <a href="javascript:void(0)">{{ $kilometer }} Km</a></li>
                             <li class="d-flex align-items-center"><i class="icofont-location-pin"></i> <a href="javascript:void(0)">{{ $lokasi }}</a></li>
                         </ul>
                     </div>
@@ -120,7 +120,7 @@ $video = $data['inventory']['video'];
                                             <tr>
                                                 <td>Kilometer</td>
                                                 <td>:</td>
-                                                <td>{{ $kilometer }}</td>
+                                                <td>{{ $kilometer }} Km</td>
                                             </tr>
                                             <tr>
                                                 <td>Bahan Bakar</td>
@@ -215,7 +215,7 @@ $video = $data['inventory']['video'];
                                 <tr>
                                     <td>Kilometer</td>
                                     <td>:</td>
-                                    <td>{{ $kilometer }}</td>
+                                    <td>{{ $kilometer }} Km</td>
                                 </tr>
                                 <tr>
                                     <td>Bahan Bakar</td>
@@ -276,10 +276,10 @@ $video = $data['inventory']['video'];
                     @php
                     $gambar = $baseImg.'uc_unit/'.$inventory['gambar'];
                     $nama = Str::title($inventory['nama']);
-                    $harga = $inventory['harga'];
+                    $harga = number_format($inventory['harga'],0,',','.');
                     $tahun = $inventory['tahun'];
                     $transmisi = $inventory['transmisi'];
-                    $kilometer = $inventory['kilometer'];
+                    $kilometer = number_format($inventory['kilometer'],0,',','.');
                     $lokasi = $inventory['lokasi'];
                     $uri = route('garasiSlug',['slug'=>$inventory['slug']]);
                     @endphp
@@ -304,7 +304,7 @@ $video = $data['inventory']['video'];
                                     </ul>
                                     <ul class="tags">
                                         <li><a href="javascript:void(0)">{{ $transmisi }}</a></li>
-                                        <li><a href="javascript:void(0)">{{ $kilometer }}</a></li>
+                                        <li><a href="javascript:void(0)">{{ $kilometer }} Km</a></li>
                                         <li><a href="javascript:void(0)">{{ $lokasi }}</a></li>
                                     </ul>
                                 </div>
