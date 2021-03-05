@@ -154,52 +154,46 @@
 @section('script')
 <script>
     let selectPicker = $('.select_picker')
-
-    //init variable
     let form = $('#form')
-
     let inventoryContainer = $('#inventory-container')
     let inventoryLink = $('#inventory-link')
 
     $(document).ready(function() {
         selectPicker.select2()
-        _showPage()
+        _showPage(new URLSearchParams(new URL(location.href).search).toString())
     })
 
     $(document).on('click', '#submit', function() {
-        let url = location.search.split('&')[0] + '&' + form.serialize()
-        _setUrl(url)
-        _showPage()
+        let url = new URL(location.href.split('&')[0] + '&' + form.serialize())
+        let params = new URLSearchParams(url.search).toString()
+        _showPage(params)
     })
 
     $(document).on('click', '.page-link', function(event) {
         event.preventDefault()
         let ini = $(this)
-        let url = ini.attr('href') + '&' + form.serialize()
-        _setUrl(url)
-        _showPage()
+        let url = new URL(ini.attr('href') + '&' + form.serialize())
+        let params = new URLSearchParams(url.search).toString()
+        _showPage(params)
     })
 
-    function _showPage(formData) {
+    function _showPage(params) {
         $.ajax({
             type: 'get',
             url: location,
             data: {
                 'MODTYPE': 'main',
-                'FD': location.search
+                'FD': params
             },
             dataType: 'json',
             success: function(response) {
+                window.history.replaceState({
+                    id: "100"
+                }, '', response.data.uri)
                 inventoryContainer.html(response.data.inventory)
                 inventoryLink.html(response.data.links)
             }
         })
-    }
-
-    function _setUrl(url) {
-        window.history.replaceState({
-            id: "100"
-        }, '', url)
     }
 </script>
 @endsection

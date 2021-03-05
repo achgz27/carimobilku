@@ -12,7 +12,7 @@ class GarasiController extends Controller
     {
         if ($request->ajax()) {
             if ($request->MODTYPE === 'main') {
-                $uri = parent::$baseUri . 'garasi' . $request->FD;
+                $uri = parent::$baseUri . 'garasi?' . $request->FD;
                 $response = Http::withToken(parent::$token)->get($uri);
 
                 $data = $response->json()['data'];
