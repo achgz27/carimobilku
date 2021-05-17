@@ -147,7 +147,7 @@ $video = $data['inventory']['video'];
                                 </div>
                                 <div class="col-md-6 d-none d-md-block">
                                     <div class="text-center">
-                                        <a class="btn btn-outline-danger btn-block btn-lg" style="margin: 1rem 0 1rem 0; font-size: 1rem;">
+                                        <a href="https://wa.me/6281212100700" class="btn btn-outline-danger btn-block btn-lg" style="margin: 1rem 0 1rem 0; font-size: 1rem;">
                                             <i class="icofont-whatsapp"></i> 081212 100 700</a>
                                         <a href="{{ route('hubungi') }}" class="btn btn-danger btn-block btn-lg" style="margin: 1rem 0 1rem 0; font-size: 1rem;">Hubungi Kami</a>
                                     </div>

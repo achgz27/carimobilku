@@ -12,7 +12,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    // protected static $baseUri = 'http://localhost/kmg/ms/public/api/';
+    // protected static $baseUri = 'http://localhost/kumala/ms/public/api/';
     // protected static $baseImg = 'http://localhost/kumalagroup/assets/img_marketing/';
 
     protected static $baseUri = 'https://portal.kumalagroup.co.id/kmg/ms/public/api/';
@@ -29,11 +29,11 @@ class Controller extends BaseController
 
     public static function auth()
     {
-        $auth = ['email' => 'gaza@kumalagroup.com', 'password' => 'Mobile@pisrvcs'];
+        $auth = ['email' => 'gaza@kumalagroup.com', 'password' => 'Mobile@pisrvcs']; 
 
         $response = Http::withBody(json_encode($auth), 'application/json')
             ->post(self::$baseUri . 'auth');
-        $result = $response->json();
+        $result = $response->json(); 
 
         if ($result['status'] === true) {
             session(['apiToken' => $result['token']]);
