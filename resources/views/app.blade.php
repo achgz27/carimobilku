@@ -30,6 +30,26 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <style>
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            display : flex;
+            align-items: center;
+            justify-content : center;
+            text-decoration: none;
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 40px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+            position: fixed;
+            right: 20px;
+            bottom: 90px;
+            z-index: 10000;
+            transition: background 0.25s;
+        }
+    </style>
 
     @yield('style')
 
@@ -67,6 +87,19 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5ee1bcf84a7c6258179a5e68/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
 
     @yield('script')
 

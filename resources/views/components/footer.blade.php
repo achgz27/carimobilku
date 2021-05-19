@@ -1,4 +1,5 @@
 <!-- ======= Footer ======= -->
+
 <footer id="footer">
     <div class="footer-top">
         <div class="container">
@@ -58,4 +59,5 @@
     </div>
 </footer><!-- End Footer -->
 
-<a href="javascript:void(0)" class="back-to-top"><i class="icofont-simple-up"></i></a>
+{{-- <a href="javascript:void(0)" class="back-to-top"><i class="icofont-simple-up"></i></a> --}}
+<a href="https://api.whatsapp.com/send?phone=62081212100700" style="color: white" class="floating-btn" target="_blank"> <i class="icofont-whatsapp"></i> </a>
