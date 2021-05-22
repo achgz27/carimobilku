@@ -18,6 +18,19 @@
     #customCard:hover {
         border: .5px solid #e1444d;
     }
+
+    .outer { margin:0 auto; max-width:800px;}
+    #big .item { background: #ffffff; padding: 9px 0px; margin:2px; color: #FFF; border-radius: 3px; text-align: center; }
+    #thumbs .item { background: #C9C9C9; height:70px; line-height:70px; padding: 0px; margin:2px; color: #FFF; border-radius: 3px; text-align: center; cursor: pointer; }
+    #thumbs .item h1 { font-size: 16px; }
+    #thumbs .current .item { background:#ffffff; }
+    .owl-theme .owl-nav [class*='owl-'] { -webkit-transition: all .3s ease; transition: all .3s ease; }
+    .owl-theme .owl-nav [class*='owl-'].disabled:hover { background-color: #D6D6D6; }
+    #big.owl-theme { position: relative; }
+    #big.owl-theme .owl-next, #big.owl-theme .owl-prev { background:#333; width: 22px; line-height:40px; height: 40px; margin-top: -20px; position: absolute; text-align:center; top: 50%; }
+    #big.owl-theme .owl-prev { left: 10px; }
+    #big.owl-theme .owl-next { right: 10px; }
+    #thumbs.owl-theme .owl-next, #thumbs.owl-theme .owl-prev { background:#333; }
 </style>
 @endsection
 
@@ -39,18 +52,7 @@ $warna = $data['inventory']['warna'];
 $video = $data['inventory']['video'];
 @endphp
 
-<section id="customCarousel" class="breadcrumbs p-0">
-    <div class="owl-carousel owl-theme dots-morphing">
-        @foreach($data['inventory']['to_galeri'] as $slider)
-        @php
-        $gambar = $baseImg.'uc_unit/galeri/'.$slider['img'];
-        @endphp
-        <div class="item">
-            <img src="{{ $gambar }}" alt="" width="100%" class="img-fluid">
-        </div>
-        @endforeach
-    </div>
-</section>
+
 
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs" style="margin-top: 0;">
@@ -67,6 +69,8 @@ $video = $data['inventory']['video'];
 
     </div>
 </section><!-- End Breadcrumbs -->
+
+
 
 <!-- ======= Blog Section ======= -->
 <section id="blog" class="blog">
@@ -176,6 +180,31 @@ $video = $data['inventory']['video'];
                         </div>
                     </div>
 
+                    {{-- slide --}}
+                    <div class="outer">
+                        <div id="big" class="owl-carousel owl-theme">
+                            @foreach($data['inventory']['to_galeri'] as $slider)
+                            @php
+                                $gambar = $baseImg.'uc_unit/galeri/'.$slider['img'];
+                            @endphp
+                            <div class="item">
+                                <img src="{{ $gambar }}" alt="" width="100%">
+                            </div>
+                            @endforeach
+                        </div>
+                        <div id="thumbs" class="owl-carousel owl-theme">
+                            @foreach($data['inventory']['to_galeri'] as $slider)
+                            @php
+                                $gambar = $baseImg.'uc_unit/galeri/'.$slider['img'];
+                            @endphp
+                            <div class="item">
+                                <img src="{{ $gambar }}" alt="" width="100%">
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    {{-- end slide --}}
+
                     <h4 class="font-weight-bold mt-4 mb-3">Deskripsi</h4>
                     <div class="entry-content">
                         {!! $content !!}
@@ -271,7 +300,7 @@ $video = $data['inventory']['video'];
 
         <div class="row">
             <div class="col-lg-12 d-flex align-items-stretch" data-aos="fade-up">
-                <div class="owl-carousel owl-theme dots-morphing">
+                <div id="products" class="owl-carousel owl-theme dots-morphing">
                     @foreach($data['related'] as $inventory)
                     @php
                     $gambar = $baseImg.'uc_unit/'.$inventory['gambar'];
@@ -322,27 +351,8 @@ $video = $data['inventory']['video'];
 
 @section('script')
 <script>
-    $('#customCarousel .owl-carousel').owlCarousel({
-        loop: true,
-        dots: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        autoHeight: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    })
 
-    $('#related .owl-carousel').owlCarousel({
+    $('#products').owlCarousel({
         margin: 30,
         dots: true,
         autoplay: true,
@@ -361,5 +371,104 @@ $video = $data['inventory']['video'];
             }
         }
     })
+</script>
+<script>
+    $(document).ready(function() {
+  var bigimage = $("#big");
+  var thumbs = $("#thumbs");
+  //var totalslides = 10;
+  var syncedSecondary = true;
+
+  bigimage
+    .owlCarousel({
+    items: 1,
+    slideSpeed: 4000,
+    nav: true,
+    animateIn: 'fadeIn',
+    animateOut: 'fadeOut',
+    autoHeight: true,
+    dots: false,
+    loop: true,
+    responsiveRefreshRate: 200,
+    navText: [
+      '<i class="icofont-simple-left" aria-hidden="true"></i>',
+      '<i class="icofont-simple-right" aria-hidden="true"></i>'
+    ]
+  })
+    .on("changed.owl.carousel", syncPosition);
+
+  thumbs
+    .on("initialized.owl.carousel", function() {
+    thumbs
+      .find(".owl-item")
+      .eq(0)
+      .addClass("current");
+  })
+    .owlCarousel({
+    items: 4,
+    dots: false,
+    nav: false,
+    navText: [
+      '<i class="icofont-simple-left" aria-hidden="true"></i>',
+      '<i class="icofont-simple-right" aria-hidden="true"></i>'
+    ],
+    smartSpeed: 100,
+    slideSpeed: 300,
+    slideBy: 4,
+    responsiveRefreshRate: 100
+  })
+    .on("changed.owl.carousel", syncPosition2);
+
+  function syncPosition(el) {
+    //if loop is set to false, then you have to uncomment the next line
+    //var current = el.item.index;
+
+    //to disable loop, comment this block
+    var count = el.item.count - 1;
+    var current = Math.round(el.item.index - el.item.count / 2 - 0.5);
+
+    if (current < 0) {
+      current = count;
+    }
+    if (current > count) {
+      current = 0;
+    }
+    //to this
+    thumbs
+      .find(".owl-item")
+      .removeClass("current")
+      .eq(current)
+      .addClass("current");
+    var onscreen = thumbs.find(".owl-item.active").length - 1;
+    var start = thumbs
+    .find(".owl-item.active")
+    .first()
+    .index();
+    var end = thumbs
+    .find(".owl-item.active")
+    .last()
+    .index();
+
+    if (current > end) {
+      thumbs.data("owl.carousel").to(current, 100, true);
+    }
+    if (current < start) {
+      thumbs.data("owl.carousel").to(current - onscreen, 100, true);
+    }
+  }
+
+  function syncPosition2(el) {
+    if (syncedSecondary) {
+      var number = el.item.index;
+      bigimage.data("owl.carousel").to(number, 100, true);
+    }
+  }
+
+  thumbs.on("click", ".owl-item", function(e) {
+    e.preventDefault();
+    var number = $(this).index();
+    bigimage.data("owl.carousel").to(number, 300, true);
+  });
+});
 </script>
 @endsection
