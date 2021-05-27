@@ -69,15 +69,15 @@
                     <div class="form-group mb-2">
                         <select name="kilometer" id="kilometer" class="form-control select_picker" style="width: 100%">
                             <option value="">Kilometer</option>
-                            <option value="10000">
+                            <option value="10000" {{Request::get('kilometer') == 10000 ? 'selected' : ''}}>
                                 < 10.000 Km</option>
-                            <option value="50000">
+                            <option value="50000" {{Request::get('kilometer') == 50000 ? 'selected' : ''}}>
                                 < 50.000 Km</option>
-                            <option value="100000">
+                            <option value="100000" {{Request::get('kilometer') == 100000 ? 'selected' : ''}}>
                                 < 100.000 Km</option>
-                            <option value="150000">
+                            <option value="150000" {{Request::get('kilometer') == 150000 ? 'selected' : ''}}>
                                 < 150.000 Km</option>
-                            <option value="200000">200.000 Km +</option>
+                            <option value="200000" {{Request::get('kilometer') == 200000 ? 'selected' : ''}}>200.000 Km +</option>
                         </select>
                     </div>
                 </div>
